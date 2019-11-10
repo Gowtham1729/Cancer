@@ -1,0 +1,13 @@
+{% extends 'index/base.html' %}
+{% block css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index/home.css' %}">
+{% endblock %}
+{% block title %}
+    Welcome to index
+{% endblock %}
+{% block body %}
+
+    <h1>Cancer Probability: {{ cancer_prob }}%</h1>
+
+{% endblock %}

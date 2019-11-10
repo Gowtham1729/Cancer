@@ -1,0 +1,56 @@
+{% extends 'index/base.html' %}
+{% block css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'index/upload.css' %}">
+{% endblock %}
+{% block title %}
+    Welcome to index
+{% endblock %}
+{% block body %}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+	  		<div class="row">
+	  			<div class="container">
+	  				<div class="row">
+						<div class="form-box center">
+                            {% for field in form %}
+                                {% if field.label != "File" %}
+                                    <div class="non input-field left" style="color: #ffffff">
+								{{ field.label }}
+                                    </div>
+                                   <div class="input-field">
+                                            <div class="input-field">
+                                                {{ field }}
+                                            </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="input-field">
+                                            <div class="input-field" id="choose-file">
+                                                Choose-file
+                                                {{ field }}
+                                            </div>
+                                    </div>
+                                {% endif %}
+
+                                            {% endfor %}
+                            <div class="input-field">
+							<input class="center" type="submit" name="submit_btn" value="Upload">
+							</div><br>
+                            <div class="left"><a href="{% url 'home' %}"><i class="material-icons" style="color: white;">arrow_backward</i></a></div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+</form>
+
+    <script>
+    $('select').material_select();
+    $('')
+    </script>
+    <script>
+        document.getElementById("upload").classList.add('active');
+    </script>
+{% endblock %}

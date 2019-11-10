@@ -1,0 +1,34 @@
+{% extends 'index/base.html' %}
+{% block css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index/home.css' %}">
+{% endblock %}
+{% block title %}
+    Welcome to index
+{% endblock %}
+{% block body %}
+<div class="container">
+	  		<div class="row">
+	  			<div class="container">
+	  				<div class="row contents-box">
+
+							<div class="col s12 m6">
+								<h4>The first wealth is health</h4>
+								<h6>Upload your medical reports. <br><br> Check your health stats!</h6>
+                                        <div class="col s12 m6 center"><a href="{% url 'upload' %}" ><button class="upload-btn">Upload</button></a></div>
+
+
+                                <div class="col s12 m6 center"><a href="{% url 'reports' %}"><button class="search-btn">Reports</button></a></div>
+                            </div>
+							<div class="col s12 m6" align="right" style="padding-right: 0px;">
+								<img src="http://impetechglobal.com/icon/health1.png" style="margin-right: 0px; width: 70%">
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+    <script>
+        document.getElementById("home").classList.add('active');
+    </script>
+{% endblock %}

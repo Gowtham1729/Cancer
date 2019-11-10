@@ -1,0 +1,38 @@
+{% extends 'index/base.html' %}
+{% block css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index/home.css' %}">
+{% endblock %}
+{% block title %}
+    Welcome to index
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="row contents-box">
+
+                    <div class="col s12 m6">
+                        <h4>{{ profile_info.user_handle }}</h4>
+                        <h6>{{ profile_info.karma }} <br> Reap the benefits of what you share!</h6>
+                        <div class="col s12 m6 center"><a href="#">
+                            <button class="upload-btn">Upload</button>
+                        </a></div>
+                        <div class="col s12 m6 center"><a href="#">
+                            <button class="search-btn">Search</button>
+                        </a></div>
+                    </div>
+                    <div class="col s12 m6" align="right" style="padding-right: 0px;">
+                        <img src="{{ profile_info.profile_picture }}" style="margin-right: 0px;">
+                    </div>
+                <p>{{ subspaces_following.0 }}</p>
+                    <ul>
+                        {% for subspace in subspaces_following %}
+                            <li><a href="s/{{ subspace.subspace_link }}">{{ subspace.subspace_title }}</a> </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

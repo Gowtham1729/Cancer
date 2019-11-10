@@ -1,0 +1,13 @@
+{% extends 'index/base.html' %}
+{% block css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index/home.css' %}">
+{% endblock %}
+{% block title %}
+    Settings
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <p>{{ profile_info.user_handle }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'index/base.html' %}
+{% block css %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'index/file.css' %}">
+{% endblock %}
+{% block title %}
+    Welcome to index
+{% endblock %}
+{% block body %}
+
+<div class="container">
+  		<div class="row">
+  			<div class="container">
+  				<div class="row">
+					<div class="search center">
+                        <div class="search-section"><input type="text" id="myInput" onkeyup="myFunction()" class="search-box" placeholder="Search">
+						</div>
+					</div>
+
+					<div class="searched-items">
+					<ul class="collection" id="myUL">
+                    <script type="text/javascript">
+                        var flag = false
+                    </script>
+                        {% for record in records %}
+                                <script type="text/javascript">
+                                     var flag = true
+                                </script>
+                                <li class="collection-item avatar">
+                                    <div style="margin-top: 15px; margin-bottom: 20px">
+                                        <span class="title">{{ record.title }}</span>
+    {#                                    <span class="title" style="float: right"> &nbsp;&nbsp; {{ record.cancer_prob }} %</span>#}
+                                        <span><a href="{% url 'download' record.title %}" target="_blank" ><button class="download-button" style="float: right">View File</button></a></span>
+                                    </div>
+                                    <div>
+                                          <div class="w3-light-grey w3-round-xlarge" style="margin-top: 15px;margin-bottom: 15px;">
+                                                <div class="w3-container w3-blue w3-round-xlarge" style="width:{{ record.cancer_prob }}%">{{ record.cancer_prob }}%</div>
+                                          </div>
+                                    </div>
+
+					            </li>
+                        {% endfor %}
+					  </ul>
+                        <script>
+                           if (flag == false) {
+                               document.write("<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Reports yet</h3>")
+                           }
+                        </script>
+                        <script>
+                            document.getElementById("reports").classList.add('active');
+                        </script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script>
+
+jQuery(document).ready(function($){
+
+$('.collection li').each(function(){
+$(this).attr('data-search-term', $(this).text().toLowerCase());
+});
+
+$('.search-box').on('keyup', function(){
+
+var searchTerm = $(this).val().toLowerCase();
+
+    $('.collection li').each(function(){
+
+        if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+
+    });
+
+});
+
+});
+</script>
+
+{% endblock %}
