@@ -14,18 +14,22 @@ def home(request):
     return render(request, 'index/home.html')
 
 
-@login_required()
 def profile(request, user_handle):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("social:begin", args=["google-oauth2"]))
     return render(request, 'index/profile.html')
 
 
-@login_required()
 def settings(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("social:begin", args=["google-oauth2"]))
     profile_info = Profile.objects.get(user=request.user)
     context = {"profile_info": profile_info}
     return render(request, 'index/settings.html', context)
 
-@login_required()
+
 def logout_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("social:begin", args=["google-oauth2"]))
     logout(request)
     return HttpResponseRedirect(reverse('home'))
