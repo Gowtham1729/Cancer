@@ -12,7 +12,7 @@ from os import path
 
 # Create your views here.
 
-@login_required()
+@login_required(login_url='/')
 def report(request, title):
     cancer_prob = Records.objects.get(user=Profile.objects.get(user=request.user), title=title).cancer_prob
     context = {"cancer_prob": cancer_prob}
