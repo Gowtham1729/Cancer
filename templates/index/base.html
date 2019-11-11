@@ -39,16 +39,20 @@
 
 			  </ul>
 
-			<ul class="side-nav right indigo darken-3" id="mobile-demo">
-				<li><a id="home" href="{% url 'home' %}">Home</a></li>
-				<li><a id="facts" href="#">Cancer Facts</a></li>
-				<li><a id="reports" href="{% url 'reports' %}">Reports</a></li>
+			<ul class="side-nav right indigo darken-3" id="mobile-demo" style="background-color: white!important;">
+                <div style="padding-top: 100px; background-color: #303E9F;padding-bottom: 15px;">
+				    <li style="margin-bottom: 25px; margin-left: 30%;"><a href="{% url 'social:begin' 'google-oauth2'%}" data-letters="{{ request.user.username|upper|make_list|first }}" class="letters" style="font-size: 3em"></a></li>
+                </div>
+                <div>
+				<li><a id="home_m" href="{% url 'home' %}">Home</a></li>
+				<li><a id="facts_m" href="#">Cancer Facts</a></li>
+				<li><a id="reports_m" href="{% url 'reports' %}">Reports</a></li>
                   <li><a href="#" id="analysis">Analysis</a></li>
-                  <li><a href="{% url 'upload' %}" id="upload">Upload</a></li>
-                  <li><a href="#" id="about">About</a></li>
-				  <li><a href="#"><i class="material-icons">exit_to_app</i></a></li>
-				<li><a href="#" data-letters="{{ request.user.username|upper|make_list|first }}" class="letters"></a></li>
-			</ul>
+                  <li><a href="{% url 'upload' %}" id="upload_m">Upload</a></li>
+                  <li><a href="#" id="about_m">About</a></li>
+                    <li><a href="{% url 'logout'%}"><i class="material-icons">exit_to_app</i>Logout</a></li>
+			</div>
+            </ul>
 
 			</div>
   		</nav>
