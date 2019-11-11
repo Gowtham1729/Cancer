@@ -49,6 +49,11 @@ def upload(request):
             context = {'form': form, "error_message": "Unsupported File Format"}
             return render(request, 'index/upload.html', context)
         record.user = Profile.objects.get(user=request.user)
+        repeat = Records.objects.all().filter(user=Profile.objects.get(user=request.user), title=record.title)
+        print(repeat)
+        if len(repeat) != 0:
+            context = {'form': form, "error_message": "File with same title already exists"}
+            return render(request, 'index/upload.html', context)
         record.save()
         updated_record = Records.objects.get(user=Profile.objects.get(user=request.user), title=record.title)
         updated_record.cancer_prob = predict_cancer(updated_record.report.path)
