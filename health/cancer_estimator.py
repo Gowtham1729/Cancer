@@ -18,7 +18,7 @@ def predict_cancer(file_path):
     y_pred = model.predict(embedding)
     cancer_prob = int(y_pred[0][0]*100)
     if cancer_prob < 50:
-        cancer_percentage = cancer_prob/10
+        cancer_percentage = int(cancer_prob/10)
     else:
         cancer_percentage = (cancer_prob - 50)*2
     return cancer_percentage
