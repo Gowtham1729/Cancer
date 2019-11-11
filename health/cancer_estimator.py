@@ -4,11 +4,11 @@ from tensorflow.keras.models import load_model
 import keras.backend.tensorflow_backend as tb
 
 BIO_BERT_PATH = '/code/biobert_v1.1_pubmed'
-TRAINED_MODEL_PATH_1 = '/code/model_1.h5'
-TRAINED_MODEL_PATH_2 = '/code/model_2.h5'
-TRAINED_MODEL_PATH_3 = '/code/model_3.h5'
-TRAINED_MODEL_PATH_4 = '/code/model_4.h5'
-TRAINED_MODEL_PATH_5 = '/code/model_5.h5'
+TRAINED_MODEL_PATH_1 = '/code/final_model_1.h5'
+TRAINED_MODEL_PATH_2 = '/code/final_model_2.h5'
+TRAINED_MODEL_PATH_3 = '/code/final_model_3.h5'
+TRAINED_MODEL_PATH_4 = '/code/final_model_4.h5'
+TRAINED_MODEL_PATH_5 = '/code/final_model_5.h5'
 
 
 def predict_cancer(file_path):
